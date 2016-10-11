@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
                 const configuration = vscode.workspace.getConfiguration().get('files.associations');
                 
                 // 添加文件关联：wxml->html, wxss->css
-                vscode.workspace.getConfiguration().update('files.associations', Object.assign({}, configuration, {
+                vscode.workspace.getConfiguration()['update']('files.associations', Object.assign({}, configuration, {
                     "*.wxml": "html",
                     "*.wxss": "css"
                 })).then(() => {}, err => {
