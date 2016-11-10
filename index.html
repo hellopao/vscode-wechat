@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height,user-scalable=no, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .center{
+            margin: 0 auto;
+        }
+
+        .mt20 {
+            margin-top: 20px;
+        }
+
+        select {
+            display: block;
+        }
+
+        .devices {
+            padding: 20px;
+        }
+
+        #previewer {
+            display: block;
+            box-shadow: 0 0 5px #888888;
+            background-color: #f0f0f0;
+        }
+        
+    </style>
+    <script>
+        const devices = [
+            { id: 'iphone_4', name: 'iPhone4 (320x480;Dpr 1)', width: 320, height: 480, dpr: 1 },
+            { id: 'iphone_4s', name: 'iPhone4s (320x480;Dpr 2)', width: 320, height: 480, dpr: 2 },
+            { id: 'iphone_5', name: 'iPhone5 (320x568;Dpr 2)', width: 320, height: 568, dpr: 2 },
+            { id: 'iphone_6', name: 'iPhone6 (375x667;Dpr 2)', width: 375, height: 667, dpr: 2 },
+            { id: 'iphone_6p', name: 'iPhone6 Plus (414x736;Dpr 3)', width: 414, height: 736, dpr: 3 },
+            { id: 'samsung_s5', name: 'Galaxy S5 (384x640;Dpr 3)', width: 384, height: 640, dpr: 3 },
+            { id: 'nexus_4', name: 'Nexus 4 (384x640;Dpr 2)', width: 384, height: 640, dpr: 2 },
+            { id: 'nexus_5', name: 'Nexus 5 (360x640;Dpr 3)', width: 360, height: 640, dpr: 3 },
+            { id: 'nexus_5x', name: 'Nexus 5x (411x731;Dpr 2.625)', width: 411, height: 731, dpr: 2.625 },
+            { id: 'nexus_6', name: 'Nexus 6 (412x732;Dpr 3.5)', width: 412, height: 732, dpr: 3.5 }
+        ];
+
+        function refreshPreviewer(device) {
+            const previewer = document.querySelector('#previewer');
+            const {width, height} = device;
+            previewer.style.width = width + "px";
+            previewer.style.height = height + "px";
+
+            previewer.contentWindow.location.reload();
+        }
+
+        function changeDevice(index) {
+            const device = devices[index];
+            refreshPreviewer(device);
+        }
+
+        function createSelect() {
+            document.querySelector('#devicesSelect').innerHTML = devices.map(device => {
+                return `<option>${device.name}</option>`
+            }).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            createSelect();
+            document.querySelector('#previewer').onload = function() {
+                const doc = this.contentWindow.document;
+                const optionIcon = doc.querySelector('.head-option');
+                optionIcon.previousSibling.style.marginLeft = "-70px";
+                optionIcon.parentNode.removeChild(optionIcon);
+            }
+        },false);
+
+
+    </script>
+</head>
+<body>
+    <div class="devices">
+        <select name="" id="devicesSelect" class="center" onchange="changeDevice(this.selectedIndex)"></select>
+    </div>
+    <div class="iframe">
+        <iframe id="previewer" class="center" src="http://127.0.0.1:$$PORT$$" height="480" width="320"/>
+    </div>
+</body>
+</html>
