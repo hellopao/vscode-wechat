@@ -36,7 +36,7 @@
         
     </style>
     <script>
-        const devices = [
+        var devices = [
             { id: 'iphone_4', name: 'iPhone4 (320x480;Dpr 1)', width: 320, height: 480, dpr: 1 },
             { id: 'iphone_4s', name: 'iPhone4s (320x480;Dpr 2)', width: 320, height: 480, dpr: 2 },
             { id: 'iphone_5', name: 'iPhone5 (320x568;Dpr 2)', width: 320, height: 568, dpr: 2 },
@@ -69,7 +69,7 @@
             }).join('');
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        function refresh() {
             createSelect();
             document.querySelector('#previewer').onload = function() {
                 const doc = this.contentWindow.document;
@@ -77,8 +77,11 @@
                 optionIcon.previousSibling.style.marginLeft = "-70px";
                 optionIcon.parentNode.removeChild(optionIcon);
             }
-        },false);
+        }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            refresh();
+        },false);
 
     </script>
 </head>
