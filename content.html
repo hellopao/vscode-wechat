@@ -12,6 +12,11 @@
             padding: 0;
         }
 
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
         .center{
             margin: 0 auto;
         }
@@ -76,8 +81,17 @@
                 const optionIcon = doc.querySelector('.head-option');
                 optionIcon.previousSibling.style.marginLeft = "-70px";
                 optionIcon.parentNode.removeChild(optionIcon);
+                const style = doc.createElement('style');
+                style.innerText = `
+                    ::-webkit-scrollbar {
+                        width: 5px;
+                        height: 5px;
+                    }
+                `;
+                doc.querySelector('head').appendChild(style);
             }
         }
+
         document.addEventListener('DOMContentLoaded', function() {
             refresh();
         },false);

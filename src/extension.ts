@@ -1,6 +1,6 @@
 'use strict';
 
-import * as fs from "./libs/fs";
+import * as fs from "fs";
 import * as path from "path";
 import * as vscode from 'vscode';
 
@@ -9,36 +9,38 @@ import createTypeDefinition from "./typeDefinition";
 import createJSConfiguration from "./jsconfiguration";
 import * as wechatApp from "./wechatApp";
 
-export function activate(context: vscode.ExtensionContext) {
-
+function checkWechatAppProj() {
     const appConfigFile = path.join(vscode.workspace.rootPath, "app.json");
+    try {
+        const data = fs.readFileSync(appConfigFile, 'utf-8');
+        const config = JSON.parse(data);
+
+        return config['pages'] && Array.isArray(config['pages']);
+    } catch (err) {
+        return false; 
+    }
+}
+
+export function activate(context: vscode.ExtensionContext) {
     
-    fs.readFile(appConfigFile)
+    const isWechatAppProj = checkWechatAppProj();
 
-        .then(data => {
-            const config = JSON.parse(data);
-            
-            if(config['pages'] && Array.isArray(config['pages'])) {
+    if (isWechatAppProj) {
+        // 创建文件关联
+        createFileAssociation();
+        // 安装wx.d.ts
+        createTypeDefinition();
+        // 创建jsconfig.json
+        createJSConfiguration();
+    }
 
-                // 创建文件关联
-                createFileAssociation();
+    let disposable = vscode.commands.registerCommand('extension.previewWechatApp', () => {
+        if (isWechatAppProj) {
+            wechatApp.startPreviewWechatApp();
+        } else {
+            vscode.window.showErrorMessage('当前目录与小程序项目结构不符，请检查app.json')
+        }
+    });
 
-                // 安装wx.d.ts
-                createTypeDefinition();
-                    
-                // 创建jsconfig.json
-                createJSConfiguration();
-
-
-                let disposable = vscode.commands.registerCommand('extension.previewWechatApp', () => {
-                    wechatApp.startPreviewWechatApp();
-                });
-
-                context.subscriptions.push(disposable);
-            }
-        })
-            .catch(err => {
-                vscode.window.showErrorMessage('Init Wechat App Project Failed: %s', err.message);
-            })
-
+    context.subscriptions.push(disposable);
 }

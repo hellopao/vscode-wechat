@@ -78,7 +78,7 @@ export function startPreviewWechatApp() {
                 })
         })
         .catch(err => {
-            vscode.window.showErrorMessage('小程序预览失败,请稍后再试')
+            vscode.window.showErrorMessage('小程序预览失败,请稍后再试, %s', err)
         })
     
 }
