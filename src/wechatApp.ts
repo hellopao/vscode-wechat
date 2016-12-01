@@ -14,14 +14,15 @@ const previewUri = vscode.Uri.parse(`file:///${previewContent}`);
 export function startWechatAppServer(port): PromiseLike<any> {
     return new Promise((resolve, reject) => {
         let cp = child_process.exec(`node ${path.join(__dirname, "../../node_modules/wept/bin/wept")} --port ${port}`, {
-            cwd: vscode.workspace.rootPath
+            cwd: vscode.workspace.rootPath,
+            encoding: "utf-8"
         });
 
         cp.stdout.once('data', data => {
             resolve();
         });
-       
-        cp.stderr.once('data', err => {
+
+        cp.stderr.on('data', err => {
             reject(err);
         })
     });
@@ -78,7 +79,7 @@ export function startPreviewWechatApp() {
                 })
         })
         .catch(err => {
-            vscode.window.showErrorMessage('小程序预览失败,请稍后再试, %s', err)
+            vscode.window.showErrorMessage(`小程序预览失败,请稍后再试, 错误原因: ${err}`)
         })
     
 }

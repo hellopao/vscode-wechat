@@ -9,8 +9,11 @@ export default function createFileAssociation() {
 
     const currConfig = configuration.get(FileAssociationCongigurationKey);
 
+    if (currConfig['*.wxml'] === "html" && currConfig['*.wxss'] === "css") {
+        return;
+    }
     // 添加文件关联：wxml->html, wxss->css
-    configuration['update'](FileAssociationCongigurationKey, Object.assign({}, configuration, {
+    configuration['update'](FileAssociationCongigurationKey, Object.assign({}, currConfig, {
         "*.wxml": "html",
         "*.wxss": "css"
     })).then(() => {}, err => {

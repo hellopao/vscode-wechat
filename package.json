@@ -2,7 +2,7 @@
   "name": "vscode-wechat",
   "displayName": "vscode-wechat",
   "description": "wechat app support for vscode",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "publisher": "qinjia",
   "icon": "icon.png",
   "engines": {
@@ -20,7 +20,7 @@
     "url": "https://github.com/hellopao/vscode-wechat/issues"
   },
   "activationEvents": [
-    "workspaceContains:app.json"
+    "*"
   ],
   "main": "./out/src/extension",
   "contributes": {
@@ -52,9 +52,9 @@
     "@types/mocha": "^2.2.32"
   },
   "dependencies": {
-    "detect-port": "^1.0.5",
+    "detect-port": "^1.0.6",
     "download": "^5.0.2",
     "portfinder": "^1.0.9",
-    "wept": "^0.5.4"
+    "wept": "^0.5.8"
   }
 }

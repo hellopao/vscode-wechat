@@ -12,7 +12,6 @@ const typingsSrcFile = path.join(__dirname, "../../wx.d.ts");
 function copyDefinitionFile() {
     return download(definitionFileUrl, typingsDestDir)
         .then(() => {
-            console.log('download success')
         }, () => {
             return fs.copyFile(typingsSrcFile, typingsDestDir)
         })
@@ -20,7 +19,6 @@ function copyDefinitionFile() {
 
 export default function createTypeDefinition() {
     // 安装wx.d.ts
-
     fs.exsist(typingsDestDir) 
         .then(exsists => {
             if (exsists) {

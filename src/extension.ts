@@ -25,15 +25,6 @@ export function activate(context: vscode.ExtensionContext) {
     
     const isWechatAppProj = checkWechatAppProj();
 
-    if (isWechatAppProj) {
-        // 创建文件关联
-        createFileAssociation();
-        // 安装wx.d.ts
-        createTypeDefinition();
-        // 创建jsconfig.json
-        createJSConfiguration();
-    }
-
     let disposable = vscode.commands.registerCommand('extension.previewWechatApp', () => {
         if (isWechatAppProj) {
             wechatApp.startPreviewWechatApp();
@@ -43,4 +34,14 @@ export function activate(context: vscode.ExtensionContext) {
     });
 
     context.subscriptions.push(disposable);
+
+    if (isWechatAppProj) {
+        // 创建文件关联
+        createFileAssociation();
+        // 安装wx.d.ts
+        createTypeDefinition();
+        // 创建jsconfig.json
+        createJSConfiguration();
+    }
+
 }
