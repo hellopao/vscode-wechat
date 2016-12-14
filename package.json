@@ -55,6 +55,6 @@
     "detect-port": "^1.0.6",
     "download": "^5.0.2",
     "portfinder": "^1.0.9",
-    "wept": "^0.5.8"
+    "wept": "^0.6.7"
   }
 }

@@ -36,7 +36,9 @@ export function formatPreviewerContent(port) {
 }
 
 export function createPreviewer() {
-    return vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, "wechat App")
+    const viewColumn = +vscode.window.activeTextEditor.viewColumn;
+
+    return vscode.commands.executeCommand('vscode.previewHtml', previewUri, Math.min(viewColumn + 1, vscode.ViewColumn.Three), "wechat App")
         .then(res => {
         }, err => {
             console.log(err);
