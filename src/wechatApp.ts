@@ -1,8 +1,8 @@
 "use strict";
 
 import * as path from "path";
-import * as fs from "./libs/fs";
 import * as child_process from "child_process";
+import * as fs from "mz/fs";
 import * as vscode from "vscode";
 
 import * as portServices from "./libs/port";
@@ -31,7 +31,7 @@ export function startWechatAppServer(port): PromiseLike<any> {
 export function formatPreviewerContent(port) {
     return fs.readFile(previewContentTpl)
         .then(data => {
-            return fs.writeFile(previewContent, data.replace("$$PORT$$", port.toString()))
+            return fs.writeFile(previewContent, data.toString().replace("$$PORT$$", port.toString()))
     })
 }
 
@@ -39,10 +39,6 @@ export function createPreviewer() {
     const viewColumn = +vscode.window.activeTextEditor.viewColumn;
 
     return vscode.commands.executeCommand('vscode.previewHtml', previewUri, Math.min(viewColumn + 1, vscode.ViewColumn.Three), "wechat App")
-        .then(res => {
-        }, err => {
-            console.log(err);
-        })
 }
 
 export function registerServer(port) {
@@ -52,7 +48,7 @@ export function registerServer(port) {
 export function getRunningServer() {
     return fs.readFile(path.join(__dirname, "../../port"))
         .then(data => {
-            return portServices.isFreePort(data)
+            return portServices.isFreePort(data.toString())
                 .then(res => {
                     return !res;
                 });

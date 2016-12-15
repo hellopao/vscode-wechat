@@ -13,10 +13,10 @@ export default function createFileAssociation() {
         return;
     }
     // 添加文件关联：wxml->html, wxss->css
-    configuration['update'](FileAssociationCongigurationKey, Object.assign({}, currConfig, {
+    return configuration['update'](FileAssociationCongigurationKey, Object.assign({}, currConfig, {
         "*.wxml": "html",
         "*.wxss": "css"
     })).then(() => {}, err => {
-        vscode.window.showErrorMessage('Create Files Association Failed: %s', err)
+        vscode.window.showErrorMessage(`Create Files Association Failed: ${err}`)
     })
 }

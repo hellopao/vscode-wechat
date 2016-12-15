@@ -52,8 +52,10 @@
     "@types/mocha": "^2.2.32"
   },
   "dependencies": {
+    "@types/mz": "0.0.30",
     "detect-port": "^1.0.6",
     "download": "^5.0.2",
+    "mz": "^2.6.0",
     "portfinder": "^1.0.9",
     "wept": "^0.6.7"
   }

@@ -78,9 +78,9 @@
             createSelect();
             document.querySelector('#previewer').onload = function() {
                 const doc = this.contentWindow.document;
-                const optionIcon = doc.querySelector('.head-option');
-                optionIcon.previousSibling.style.marginLeft = "-70px";
-                optionIcon.parentNode.removeChild(optionIcon);
+                // const optionIcon = doc.querySelector('.head-option');
+                // optionIcon.previousSibling.style.marginLeft = "-70px";
+                // optionIcon.parentNode.removeChild(optionIcon);
                 const style = doc.createElement('style');
                 style.innerText = `
                     ::-webkit-scrollbar {

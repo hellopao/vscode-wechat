@@ -1,6 +1,6 @@
 'use strict';
 
-import * as fs from "fs";
+import * as fs from "mz/fs";
 import * as path from "path";
 import * as vscode from 'vscode';
 
@@ -36,12 +36,14 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(disposable);
 
     if (isWechatAppProj) {
-        // 创建文件关联
-        createFileAssociation();
-        // 安装wx.d.ts
-        createTypeDefinition();
-        // 创建jsconfig.json
-        createJSConfiguration();
+        Promise.all([
+            // 创建文件关联
+            createFileAssociation(),
+            // 安装wx.d.ts
+            createTypeDefinition(),
+            // 创建jsconfig.json
+            createJSConfiguration()
+        ]);
     }
 
 }
