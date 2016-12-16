@@ -13,8 +13,9 @@
         }
 
         ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
+            width: 2px;
+            height: 2px;
+            background-color: #ffffff;
         }
 
         .center{
@@ -42,7 +43,6 @@
     </style>
     <script>
         var devices = [
-            { id: 'iphone_4', name: 'iPhone4 (320x480;Dpr 1)', width: 320, height: 480, dpr: 1 },
             { id: 'iphone_4s', name: 'iPhone4s (320x480;Dpr 2)', width: 320, height: 480, dpr: 2 },
             { id: 'iphone_5', name: 'iPhone5 (320x568;Dpr 2)', width: 320, height: 568, dpr: 2 },
             { id: 'iphone_6', name: 'iPhone6 (375x667;Dpr 2)', width: 375, height: 667, dpr: 2 },
@@ -78,14 +78,12 @@
             createSelect();
             document.querySelector('#previewer').onload = function() {
                 const doc = this.contentWindow.document;
-                // const optionIcon = doc.querySelector('.head-option');
-                // optionIcon.previousSibling.style.marginLeft = "-70px";
-                // optionIcon.parentNode.removeChild(optionIcon);
                 const style = doc.createElement('style');
                 style.innerText = `
                     ::-webkit-scrollbar {
                         width: 5px;
                         height: 5px;
+                        background-color: #ffffff;
                     }
                 `;
                 doc.querySelector('head').appendChild(style);
