@@ -2,7 +2,7 @@
   "name": "vscode-wechat",
   "displayName": "vscode-wechat",
   "description": "wechat app support for vscode",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "qinjia",
   "icon": "icon.png",
   "engines": {
@@ -36,6 +36,12 @@
         "key": "ctrl+f8",
         "mac": "cmd+f8",
         "when": "editorTextFocus"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/wechat.json"
       }
     ]
   },

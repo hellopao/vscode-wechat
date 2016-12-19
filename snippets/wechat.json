@@ -1,0 +1,810 @@
+{
+    "wx.request": {
+        "prefix": "wx.request",
+        "body": [
+            "wx.request({",
+            "\turl: 'https://URL$1',",
+            "\tdata: {$2},",
+            "\tmethod: 'GET$3', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT",
+            "\t// header: {}, // 设置请求的 header",
+            "\tsuccess: function(res){",
+            "\t// success$4",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$5",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$6",
+            "\t}",
+            "})"
+        ],
+        "description": "发起 https 请求。一个微信小程序，同时只能有5个网络请求连接。"
+    },
+    "wx.connectSocket": {
+        "prefix": "wx.connectSocket",
+        "body": [
+            "wx.connectSocket({",
+            "\turl: \\\"wss://URL$1\\"
+        ],
+        "description": "创建一个 WebSocket 连接。"
+    },
+    "wx.onSocketClose": {
+        "prefix": "wx.onSocketClose",
+        "body": [
+            "wx.onSocketClose(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "监听 WebSocket 关闭。"
+    },
+    "wx.onSocketError": {
+        "prefix": "wx.onSocketError",
+        "body": [
+            "wx.onSocketError(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "监听 WebSocket 错误。"
+    },
+    "wx.onSocketMessage": {
+        "prefix": "wx.onSocketMessage",
+        "body": [
+            "wx.onSocketMessage(function(data) {",
+            "\t// data$1",
+            "})"
+        ],
+        "description": "监听 WebSocket 接受到服务器的消息事件。"
+    },
+    "wx.onSocketOpen": {
+        "prefix": "wx.onSocketOpen",
+        "body": [
+            "wx.onSocketOpen(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "监听 WebSocket 连接打开事件。"
+    },
+    "wx.sendSocketMessage": {
+        "prefix": "wx.sendSocketMessage",
+        "body": [
+            "wx.sendSocketMessage({",
+            "\tdata: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "通过 WebSocket 连接发送数据，需要先 wx.connectSocket，并在 wx.onSocketOpen 回调之后才能发送。"
+    },
+    "wx.downloadFile": {
+        "prefix": "wx.downloadFile",
+        "body": [
+            "wx.downloadFile({",
+            "\turl: \\\"https://URL$1\\"
+        ],
+        "description": "下载文件资源到本地。客户端直接发起一个 HTTP GET 请求，把下载到的资源根据 type 进行处理，并返回文件的本地临时路径。"
+    },
+    "wx.uploadFile": {
+        "prefix": "wx.uploadFile",
+        "body": [
+            "wx.uploadFile({",
+            "\turl: 'https://String$1',",
+            "\tfilePath:'filePath$2',",
+            "\tname:'name$3',",
+            "\t// header: {}, // 设置请求的 header",
+            "\t// formData: {}, // HTTP 请求中其他额外的 form data",
+            "\tsuccess: function(res){",
+            "\t// success$4",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$5",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$6",
+            "\t}",
+            "})"
+        ],
+        "description": "关闭 WebSocket 连接。"
+    },
+    "wx.chooseImage": {
+        "prefix": "wx.chooseImage",
+        "body": [
+            "wx.chooseImage({",
+            "\tcount: 9$1, // 最多可以选择的图片张数，默认9",
+            "\tsizeType: ['original', 'compressed'$2], // original 原图，compressed 压缩图，默认二者都有",
+            "\tsourceType: ['album', 'camera'$3], // album 从相册选图，camera 使用相机，默认二者都有",
+            "\tsuccess: function(res){",
+            "\t// success$4",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$5",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$6",
+            "\t}",
+            "})"
+        ],
+        "description": "从本地相册选择图片或使用相机拍照。"
+    },
+    "wx.previewImage": {
+        "prefix": "wx.previewImage",
+        "body": [
+            "wx.previewImage({",
+            "\t// current: 'String$1', // 当前显示图片的链接，不填则默认为 urls 的第一张",
+            "\turls: [StringArray$2],",
+            "\tsuccess: function(res){",
+            "\t// success$3",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$4",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$5",
+            "\t}",
+            "})"
+        ],
+        "description": "预览图片。"
+    },
+    "wx.getImageInfo": {
+        "prefix": "wx.getImageInfo",
+        "body": [
+            "wx.getImageInfo({",
+            "\tsrc: 'src$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "获取图片信息。"
+    },
+    "wx.startRecord": {
+        "prefix": "wx.startRecord",
+        "body": [
+            "wx.startRecord({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "开始录音。当主动调用 wx.stopRecord，或者录音超过1分钟时自动结束录音，返回录音文件的临时文件路径。"
+    },
+    "wx.stopRecord": {
+        "prefix": "wx.stopRecord",
+        "body": [
+            "wx.stopRecord({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​ 主动调用停止录音。"
+    },
+    "wx.playVoice": {
+        "prefix": "wx.playVoice",
+        "body": [
+            "wx.playVoice({",
+            "\tfilePath: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "​开始播放语音，同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放。"
+    },
+    "wx.pauseVoice": {
+        "prefix": "wx.pauseVoice",
+        "body": [
+            "wx.pauseVoice({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​暂停正在播放的语音。"
+    },
+    "wx.stopVoice": {
+        "prefix": "wx.stopVoice",
+        "body": [
+            "wx.stopVoice({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​结束播放语音。"
+    },
+    "wx.getBackgroundAudioPlayerState": {
+        "prefix": "wx.getBackgroundAudioPlayerState",
+        "body": [
+            "wx.getBackgroundAudioPlayerState({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​获取音乐播放状态。"
+    },
+    "wx.playBackgroundAudio": {
+        "prefix": "wx.playBackgroundAudio",
+        "body": [
+            "wx.playBackgroundAudio({",
+            "\tdataUrl: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "​播放音乐，同时只能有一首音乐正在播放。"
+    },
+    "wx.pauseBackgroundAudio": {
+        "prefix": "wx.pauseBackgroundAudio",
+        "body": [
+            "wx.pauseBackgroundAudio({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​暂停播放音乐。"
+    },
+    "wx.seekBackgroundAudio": {
+        "prefix": "wx.seekBackgroundAudio",
+        "body": [
+            "wx.seekBackgroundAudio({",
+            "\tposition: Number$1,",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "控制音乐播放进度。"
+    },
+    "wx.stopBackgroundAudio": {
+        "prefix": "wx.stopBackgroundAudio",
+        "body": [
+            "wx.stopBackgroundAudio({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "​停止播放音乐。"
+    },
+    "wx.onBackgroundAudioPlay": {
+        "prefix": "wx.onBackgroundAudioPlay",
+        "body": [
+            "wx.onBackgroundAudioPlay(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "​监听音乐播放。"
+    },
+    "wx.onBackgroundAudioPause": {
+        "prefix": "wx.onBackgroundAudioPause",
+        "body": [
+            "wx.onBackgroundAudioPause(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "​监听音乐暂停。"
+    },
+    "wx.onBackgroundAudioStop": {
+        "prefix": "wx.onBackgroundAudioStop",
+        "body": [
+            "wx.onBackgroundAudioStop(function() {",
+            "\t// callback$1",
+            "})"
+        ],
+        "description": "​监听音乐停止。"
+    },
+    "wx.chooseVideo": {
+        "prefix": "wx.chooseVideo",
+        "body": [
+            "wx.chooseVideo({",
+            "\tsourceType: ['album', 'camera'], // album 从相册选视频，camera 使用相机拍摄",
+            "\t// maxDuration: 60, // 拍摄视频最长拍摄时间，单位秒。最长支持60秒",
+            "\tcamera: ['front', 'back'],",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "拍摄视频或从手机相册中选视频，返回视频的临时文件路径。"
+    },
+    "wx.saveFile": {
+        "prefix": "wx.saveFile",
+        "body": [
+            "wx.saveFile({",
+            "\ttempFilePath: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "保存文件到本地。"
+    },
+    "wx.openDocument": {
+        "prefix": "wx.openDocument",
+        "body": [
+            "wx.openDocument({",
+            "\tfilePath: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "在新 webview 打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx。"
+    },
+    "wx.getSavedFileList": {
+        "prefix": "wx.getSavedFileList",
+        "body": [
+            "wx.getSavedFileList({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "获取该小程序下已保存的文件列表。"
+    },
+    "wx.getSavedFileInfo": {
+        "prefix": "wx.getSavedFileInfo",
+        "body": [
+            "wx.getSavedFileInfo({",
+            "\tfilePath: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "获取该已保存的文件信息。"
+    },
+    "wx.removeSavedFile": {
+        "prefix": "wx.removeSavedFile",
+        "body": [
+            "wx.removeSavedFile({",
+            "\tfilePath: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "删除已保存的文件。"
+    },
+    "wx.setStorage": {
+        "prefix": "wx.setStorage",
+        "body": [
+            "wx.setStorage({",
+            "\tkey: 'String$1',",
+            "\tdata: Object/String$2,",
+            "\tsuccess: function(res){",
+            "\t// success$3",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$4",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$5",
+            "\t}",
+            "})"
+        ],
+        "description": "将数据存储在本地缓存中指定的 key 中，这是一个异步接口。"
+    },
+    "wx.setStorageSync": {
+        "prefix": "wx.setStorageSync",
+        "body": [
+            "wx.setStorageSync('String$1', Object/String$2)"
+        ],
+        "description": "将 data 存储在本地缓存中指定的 key 中，这是一个同步接口。"
+    },
+    "wx.getStorage": {
+        "prefix": "wx.getStorage",
+        "body": [
+            "wx.getStorage({",
+            "\tkey: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "从本地缓存中异步获取指定 key 对应的内容，这是一个异步接口。"
+    },
+    "wx.getStorageSync": {
+        "prefix": "wx.getStorageSync",
+        "body": [
+            "wx.getStorageSync('String$1')"
+        ],
+        "description": "从本地缓存中同步获取指定 key 对应的内容，这是一个同步接口。"
+    },
+    "wx.clearStorage": {
+        "prefix": "wx.clearStorage",
+        "body": [
+            "wx.clearStorage({",
+            "\tkey: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "清理本地数据缓存，这是一个异步接口。"
+    },
+    "wx.clearStorageSync": {
+        "prefix": "wx.clearStorageSync",
+        "body": [
+            "wx.clearStorageSync()"
+        ],
+        "description": "清理本地数据缓存，这是一个同步接口。"
+    },
+    "wx.getStorageInfo": {
+        "prefix": "wx.getStorageInfo",
+        "body": [
+            "wx.getStorageInfo({",
+            "\tkey: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "获取 storage 相关信息，这是一个异步接口。"
+    },
+    "wx.getStorageInfoSync": {
+        "prefix": "wx.getStorageInfoSync",
+        "body": [
+            "wx.getStorageInfoSync()"
+        ],
+        "description": "获取 storage 相关信息，这是一个同步接口。"
+    },
+    "wx.removeStorage": {
+        "prefix": "wx.removeStorage",
+        "body": [
+            "wx.removeStorage({",
+            "\tkey: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "指定 key 删除本地数据，这是一个异步接口。"
+    },
+    "wx.removeStorageSync": {
+        "prefix": "wx.removeStorageSync",
+        "body": [
+            "wx.removeStorageSync('String$1')"
+        ],
+        "description": "指定 key 删除本地数据，这是一个同步接口。"
+    },
+    "wx.getLocation": {
+        "prefix": "wx.getLocation",
+        "body": [
+            "wx.getLocation({",
+            "\ttype: 'wgs84$1', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "获取当前的地理位置、速度。"
+    },
+    "wx.openLocation": {
+        "prefix": "wx.openLocation",
+        "body": [
+            "wx.openLocation({",
+            "\tlatitude: Float$1, // 纬度，范围为-90~90，负数表示南纬",
+            "\tlongitude: Float$2, // 经度，范围为-180~180，负数表示西经",
+            "\tscale: 28$3, // 缩放比例",
+            "\t// name: 'name$4', // 位置名",
+            "\t// address: 'address$5', // 地址的详细说明",
+            "\tsuccess: function(res){",
+            "\t// success$6",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$7",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$8",
+            "\t}",
+            "})"
+        ],
+        "description": "使用微信内置地图查看位置。"
+    },
+    "wx.chooseLocation": {
+        "prefix": "wx.chooseLocation",
+        "body": [
+            "wx.chooseLocation({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "调起原生地图选点界面，返回用户所选的位置名称及经纬度。"
+    },
+    "wx.navigateTo": {
+        "prefix": "wx.navigateTo",
+        "body": [
+            "wx.navigateTo({",
+            "\turl: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。"
+    },
+    "wx.redirectTo": {
+        "prefix": "wx.redirectTo",
+        "body": [
+            "wx.redirectTo({",
+            "\turl: 'String$1',",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "关闭当前页面，跳转到应用内的某个页面。"
+    },
+    "wx.navigateBack": {
+        "prefix": "wx.navigateBack",
+        "body": [
+            "wx.navigateBack({",
+            "\tdelta: 1$1, // 回退前 delta(默认为1) 页面",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})"
+        ],
+        "description": "关闭当前页面，回退前 delta(默认为1) 页面。"
+    },
+    "wx.createContext": {
+        "prefix": "wx.createContext",
+        "body": [
+            "wx.createContext()"
+        ],
+        "description": "创建并返回绘图上下文context对象。"
+    },
+    "wx.drawCanvas": {
+        "prefix": "wx.drawCanvas",
+        "body": [
+            "wx.drawCanvas({",
+            "\tcanvasId: 'String$1',",
+            "\tactions: actions$2",
+            "})"
+        ],
+        "description": "drawCanvas。"
+    },
+    "wx.canvasToTempFilePath": {
+        "prefix": "wx.canvasToTempFilePath",
+        "body": [
+            "wx.canvasToTempFilePath({",
+            "\tcanvasId: canvasId$1,",
+            "\tsuccess: function(res){",
+            "\t// success$2",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$3",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$4",
+            "\t}",
+            "})",
+            ""
+        ],
+        "description": "将 canvas 导出为图片，并返回临时文件路劲。"
+    },
+    "wx.login": {
+        "prefix": "wx.login",
+        "body": [
+            "wx.login({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "调用接口获取登录凭证（code）进而换取用户登录态信息，包括用户的唯一标识（openid） 及本次登录的 会话密钥（session_key）。"
+    },
+    "wx.getUserInfo": {
+        "prefix": "wx.getUserInfo",
+        "body": [
+            "wx.getUserInfo({",
+            "\tsuccess: function(res){",
+            "\t// success$1",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$2",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$3",
+            "\t}",
+            "})"
+        ],
+        "description": "获取用户信息，需要先调用 wx.login 接口。"
+    },
+    "wx.requestPayment": {
+        "prefix": "wx.requestPayment",
+        "body": [
+            "wx.requestPayment({",
+            "\ttimeStamp: +new Date(),",
+            "\tnonceStr: 'String1$1',",
+            "\tpackage: 'String2$2',",
+            "\tsignType: 'MD5',",
+            "\tpaySign: 'String3$3',",
+            "\tsuccess: function(res){",
+            "\t// success$4",
+            "\t},",
+            "\tfail: function() {",
+            "\t// fail$5",
+            "\t},",
+            "\tcomplete: function() {",
+            "\t// complete$6",
+            "\t}",
+            "})"
+        ],
+        "description": "发起微信支付。"
+    }
+}
