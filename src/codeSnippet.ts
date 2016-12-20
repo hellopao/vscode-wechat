@@ -5,7 +5,8 @@ import * as path from "path";
 import * as crypto from "crypto";
 import * as vscode from "vscode";
 
-const snippetFile = path.join(__dirname,'../../snippets/wechat.json');
+const wechatSnippetFile = path.join(__dirname,'../../snippets/wechat.json');
+const configSnippetFile = path.join(__dirname,'../../snippets/config.json');
 
 export function getWechatApiSnippets() {
     return fs.readFile(path.join(__dirname, '../../api.txt'), 'utf-8')
@@ -37,7 +38,7 @@ export function getWechatApiSnippets() {
                         .replace(/(\\n) {2}/g,'$1\t')
                         .replace(/\{\{(.+?)\}\}/g, (str, placeholder) => {
                             index++;
-                            return `${placeholder}$${index}`
+                            return `$\{${index}:${placeholder}}`
                         })
                         .split('\\n'),
                     description
@@ -48,23 +49,66 @@ export function getWechatApiSnippets() {
         })
 }
 
-export function getCurrentSnippets() {
-    return fs.exists(snippetFile)
+export function getCurrentSnippets(){
+    return fs.exists(wechatSnippetFile)
         .then(exists => {
             if (exists) {
-                return fs.readFile(snippetFile, 'utf-8');
+                return fs.readFile(wechatSnippetFile, 'utf-8');
             }
             return Promise.resolve("");
         })
 }
 
+export function getConfigSnippets(){
+    return fs.readFile(path.join(__dirname, '../../config.txt'), 'utf-8')
+        .then(data => {
+            let snippets = {};
+
+            data.replace(/\br\s+=\s+"([^"]+)",[\s\S]*?o\s+=\s+"(.*?)",[\s\S]*?i\s+=\s+'(.*?)';/g, (str, item, description, snippet) => {
+                snippets[item] = {
+                    snippet,
+                    description
+                }
+                return str;
+            });
+
+            let config = {};
+
+            Object.keys(snippets).forEach(item => {
+                const {snippet, description} = snippets[item];
+
+                let index = 0;
+
+                config[item] = {
+                    prefix: item,
+                    body: snippet
+                        .replace(/(\\n) {4}/g,'$1\t\t')
+                        .replace(/(\\n) {2}/g,'$1\t')
+                        .replace(/\{\{(.+?)\}\}/g, (str, placeholder) => {
+                            index++;
+                            return `$\{${index}:${placeholder}}`
+                        })
+                        .split('\\n'),
+                    description
+                }
+            });
+
+            return JSON.stringify(config);
+        })
+
+}
+
 export default function createCodeSnippets() {
-    return Promise.all([getCurrentSnippets(), getWechatApiSnippets()])
-        .then(([current, snippets]) => {
-            if (crypto.createHash('md5').update(current).digest('hex') === crypto.createHash('md5').update(snippets).digest('hex')) {
-                return Promise.resolve();
+    return Promise.all([getCurrentSnippets(), getWechatApiSnippets(), getConfigSnippets()])
+        .then(results => {
+            const [current, wechatSnippets, configSnippets] = results;
+            if (crypto.createHash('md5').update(current).digest('hex') === crypto.createHash('md5').update(wechatSnippets).digest('hex')) {
+                return; 
             }
-            return fs.writeFile(snippetFile, snippets); 
+            return Promise.all([
+                fs.writeFile(wechatSnippetFile, wechatSnippets),
+                fs.writeFile(configSnippetFile, configSnippets)
+            ]); 
         })
         .catch(err => {
             console.log(`createCodeSnippets failed: ${err}`)

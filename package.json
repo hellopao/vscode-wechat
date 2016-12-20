@@ -42,6 +42,10 @@
       {
         "language": "javascript",
         "path": "./snippets/wechat.json"
+      },
+      {
+        "language": "json",
+        "path": "./snippets/config.json"
       }
     ]
   },
