@@ -16,10 +16,10 @@ wechat app support for vscode(version v1.6.0+)
 
 ## screeshot
 
- . ![api1](./screenshots/api1.png)
+ . ![fileassociation](./screenshots/fileassociation.png)
 
- . ![api2](./screenshots/api2.png)
+ . ![intellisense](./screenshots/intellisense.png)
 
- . ![api3](./screenshots/api3.png)
+ . ![snippets](./screenshots/snippets.png)
 
- . ![api4](./screenshots/api4.png)
+ . ![preview](./screenshots/preview.png)
