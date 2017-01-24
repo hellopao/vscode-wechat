@@ -37,6 +37,16 @@
         "mac": "cmd+f8",
         "when": "editorTextFocus"
       }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/wechat.json"
+      },
+      {
+        "language": "json",
+        "path": "./snippets/config.json"
+      }
     ]
   },
   "scripts": {

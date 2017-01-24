@@ -1,0 +1,613 @@
+﻿function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "request({\n  url: 'https://{{URL}}',\n  data: {{{}}},\n  method: '{{GET}}', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT\n  // header: {}, // 设置请求的 header\n  " + r.cb + "\n})",
+        i = "发起 https 请求。一个微信小程序，同时只能有5个网络请求连接。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "connectSocket({\n  url: \"wss://{{URL}}\",\n  data: {{{}}},\n  // header: {}, // 设置请求的 header\n  method: '{{GET}}', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT\n  " + r.cb + "\n})",
+        i = "创建一个 WebSocket 连接。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onSocketClose(function() {\n  {{// callback}}\n})",
+        i = "监听 WebSocket 关闭。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onSocketError(function() {\n  {{// callback}}\n})",
+        i = "监听 WebSocket 错误。";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onSocketMessage(function(data) {\n  {{// data}}\n})",
+        i = "监听 WebSocket 接受到服务器的消息事件。";
+        var u = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onSocketOpen(function() {\n  {{// callback}}\n})",
+        i = "监听 WebSocket 连接打开事件。";
+        var d = {
+            insertText: o,
+            documentation: i
+        };
+        o = "sendSocketMessage({\n  data: '{{String}}',\n  " + r.cb + "\n})",
+        i = "通过 WebSocket 连接发送数据，需要先 wx.connectSocket，并在 wx.onSocketOpen 回调之后才能发送。";
+        var p = {
+            insertText: o,
+            documentation: i
+        };
+        o = "downloadFile({\n  url: \"https://{{URL}}\",\n  // type: 'image', // 下载资源的类型，用于客户端识别处理，有效值：image/audio/video\n  // header: {}, // 设置请求的 header\n  " + r.cb + "\n})",
+        i = "下载文件资源到本地。客户端直接发起一个 HTTP GET 请求，把下载到的资源根据 type 进行处理，并返回文件的本地临时路径。";
+        var f = {
+            insertText: o,
+            documentation: i
+        };
+        o = "uploadFile({\n  url: 'https://{{String}}',\n  filePath:'{{filePath}}',\n  name:'{{name}}',\n  // header: {}, // 设置请求的 header\n  // formData: {}, // HTTP 请求中其他额外的 form data\n  " + r.cb + "\n})",
+        i = "将本地资源上传到开发者服务器。";
+        var h = {
+            insertText: o,
+            documentation: i
+        };
+        o = "closeSocket()",
+        i = "关闭 WebSocket 连接。";
+        var g = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            request: a,
+            connectSocket: s,
+            onSocketClose: l,
+            onSocketError: c,
+            onSocketMessage: u,
+            onSocketOpen: d,
+            sendSocketMessage: p,
+            downloadFile: f,
+            uploadFile: h,
+            closeSocket: g
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = "success: function(res){\n    {{// success}}\n  },\n  fail: function() {\n    {{// fail}}\n  },\n  complete: function() {\n    {{// complete}}\n  }";
+        e.exports = {
+            cb: n
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "chooseImage({\n  count: {{9}}, // 最多可以选择的图片张数，默认9\n  sizeType: [{{'original', 'compressed'}}], // original 原图，compressed 压缩图，默认二者都有\n  sourceType: [{{'album', 'camera'}}], // album 从相册选图，camera 使用相机，默认二者都有\n  " + r.cb + "\n})",
+        i = "从本地相册选择图片或使用相机拍照。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "previewImage({\n  // current: '{{String}}', // 当前显示图片的链接，不填则默认为 urls 的第一张\n  urls: [{{StringArray}}],\n  " + r.cb + "\n})",
+        i = "预览图片。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getImageInfo({\n  src: '{{src}}',\n  " + r.cb + "\n})",
+        i = "获取图片信息。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "startRecord({\n  " + r.cb + "\n})",
+        i = "开始录音。当主动调用 wx.stopRecord，或者录音超过1分钟时自动结束录音，返回录音文件的临时文件路径。";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        o = "stopRecord({\n  " + r.cb + "\n})",
+        i = "​ 主动调用停止录音。";
+        var u = {
+            insertText: o,
+            documentation: i
+        };
+        o = "playVoice({\n  filePath: '{{String}}',\n  " + r.cb + "\n})",
+        i = "​开始播放语音，同时只允许一个语音文件正在播放，如果前一个语音文件还没播放完，将中断前一个语音播放。";
+        var d = {
+            insertText: o,
+            documentation: i
+        };
+        o = "pauseVoice({\n  " + r.cb + "\n})",
+        i = "​暂停正在播放的语音。";
+        var p = {
+            insertText: o,
+            documentation: i
+        };
+        o = "stopVoice({\n  " + r.cb + "\n})",
+        i = "​结束播放语音。";
+        var f = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getBackgroundAudioPlayerState({\n  " + r.cb + "\n})",
+        i = "​获取音乐播放状态。";
+        var h = {
+            insertText: o,
+            documentation: i
+        };
+        o = "playBackgroundAudio({\n  dataUrl: '{{String}}',\n  " + r.cb + "\n})",
+        i = "​播放音乐，同时只能有一首音乐正在播放。";
+        var g = {
+            insertText: o,
+            documentation: i
+        };
+        o = "pauseBackgroundAudio({\n  " + r.cb + "\n})",
+        i = "​暂停播放音乐。";
+        var m = {
+            insertText: o,
+            documentation: i
+        };
+        o = "seekBackgroundAudio({\n  position: {{Number}},\n  " + r.cb + "\n})",
+        i = "控制音乐播放进度。";
+        var v = {
+            insertText: o,
+            documentation: i
+        };
+        o = "stopBackgroundAudio({\n  " + r.cb + "\n})",
+        i = "​停止播放音乐。";
+        var b = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onBackgroundAudioPlay(function() {\n  {{// callback}}\n})",
+        i = "​监听音乐播放。";
+        var y = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onBackgroundAudioPause(function() {\n  {{// callback}}\n})",
+        i = "​监听音乐暂停。";
+        var A = {
+            insertText: o,
+            documentation: i
+        };
+        o = "onBackgroundAudioStop(function() {\n  {{// callback}}\n})",
+        i = "​监听音乐停止。";
+        var x = {
+            insertText: o,
+            documentation: i
+        };
+        o = "chooseVideo({\n  sourceType: ['album', 'camera'], // album 从相册选视频，camera 使用相机拍摄\n  // maxDuration: 60, // 拍摄视频最长拍摄时间，单位秒。最长支持60秒\n  camera: ['front', 'back'],\n  " + r.cb + "\n})",
+        i = "拍摄视频或从手机相册中选视频，返回视频的临时文件路径。";
+        var E = {
+            insertText: o,
+            documentation: i
+        };
+        o = "createAudioContext({{AudioId}})\n",
+        i = "创建并返回 audio 上下文 audioContext 对象。";
+        var w = {
+            insertText: o,
+            documentation: i
+        };
+        o = "createVideoContext({{VideoId}})\n",
+        i = "创建并返回 video 上下文 videoContext 对象。";
+        var C = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            chooseImage: a,
+            previewImage: s,
+            getImageInfo: l,
+            startRecord: c,
+            stopRecord: u,
+            playVoice: d,
+            pauseVoice: p,
+            stopVoice: f,
+            getBackgroundAudioPlayerState: h,
+            playBackgroundAudio: g,
+            pauseBackgroundAudio: m,
+            seekBackgroundAudio: v,
+            stopBackgroundAudio: b,
+            onBackgroundAudioPlay: y,
+            onBackgroundAudioPause: A,
+            onBackgroundAudioStop: x,
+            chooseVideo: E,
+            createAudioContext: w,
+            createVideoContext: C
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "saveFile({\n  tempFilePath: '{{String}}',\n  " + r.cb + "\n})",
+        i = "保存文件到本地。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "openDocument({\n  filePath: '{{String}}',\n  " + r.cb + "\n})",
+        i = "在新 webview 打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getSavedFileList({\n  " + r.cb + "\n})",
+        i = "获取该小程序下已保存的文件列表。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getSavedFileInfo({\n  filePath: '{{String}}',\n  " + r.cb + "\n})",
+        i = "获取该已保存的文件信息。";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        o = "removeSavedFile({\n  filePath: '{{String}}',\n  " + r.cb + "\n})",
+        i = "删除已保存的文件。";
+        var u = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            saveFile: a,
+            openDocument: s,
+            getSavedFileList: l,
+            getSavedFileInfo: c,
+            removeSavedFile: u
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "setStorage({\n  key: '{{String}}',\n  data: {{Object/String}},\n  " + r.cb + "\n})",
+        i = "将数据存储在本地缓存中指定的 key 中，这是一个异步接口。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "setStorageSync('{{String}}', {{Object/String}})",
+        i = "将 data 存储在本地缓存中指定的 key 中，这是一个同步接口。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getStorage({\n  key: '{{String}}',\n  " + r.cb + "\n})",
+        i = "从本地缓存中异步获取指定 key 对应的内容，这是一个异步接口。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getStorageSync('{{String}}')",
+        i = "从本地缓存中同步获取指定 key 对应的内容，这是一个同步接口。";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        o = "clearStorage({\n  key: '{{String}}',\n  " + r.cb + "\n})",
+        i = "清理本地数据缓存，这是一个异步接口。";
+        var u = {
+            insertText: o,
+            documentation: i
+        };
+        o = "clearStorageSync()",
+        i = "清理本地数据缓存，这是一个同步接口。";
+        var d = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getStorageInfo({\n  key: '{{String}}',\n  " + r.cb + "\n})",
+        i = "获取 storage 相关信息，这是一个异步接口。";
+        var p = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getStorageInfoSync()",
+        i = "获取 storage 相关信息，这是一个同步接口。";
+        var f = {
+            insertText: o,
+            documentation: i
+        };
+        o = "removeStorage({\n  key: '{{String}}',\n  " + r.cb + "\n})",
+        i = "指定 key 删除本地数据，这是一个异步接口。";
+        var h = {
+            insertText: o,
+            documentation: i
+        };
+        o = "removeStorageSync('{{String}}')",
+        i = "指定 key 删除本地数据，这是一个同步接口。";
+        var g = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            setStorage: a,
+            setStorageSync: s,
+            getStorage: l,
+            getStorageSync: c,
+            clearStorage: u,
+            clearStorageSync: d,
+            getStorageInfo: p,
+            getStorageInfoSync: f,
+            removeStorage: h,
+            removeStorageSync: g
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "getLocation({\n  type: '{{wgs84}}', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标\n  " + r.cb + "\n})",
+        i = "获取当前的地理位置、速度。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "openLocation({\n  latitude: {{Float}}, // 纬度，范围为-90~90，负数表示南纬\n  longitude: {{Float}}, // 经度，范围为-180~180，负数表示西经\n  scale: {{28}}, // 缩放比例\n  // name: '{{name}}', // 位置名\n  // address: '{{address}}', // 地址的详细说明\n  " + r.cb + "\n})",
+        i = "使用微信内置地图查看位置。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "chooseLocation({\n  " + r.cb + "\n})",
+        i = "调起原生地图选点界面，返回用户所选的位置名称及经纬度。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "createMapContext({{MapId}})\n",
+        i = "创建并返回 map 上下文 mapContext 对象。";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            getLocation: a,
+            openLocation: s,
+            chooseLocation: l,
+            createMapContext: c
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = "getNetworkType({\n  success: function(res) {\n    {{// success}}\n  }\n})",
+        r = "获取网络类型。",
+        o = {
+            insertText: n,
+            documentation: r
+        };
+        n = "getSystemInfo({\n  success: function(res) {\n    {{// success}}\n  }\n})",
+        r = "获取系统信息，这是一个异步接口。";
+        var i = {
+            insertText: n,
+            documentation: r
+        };
+        n = "getSystemInfoSync()",
+        r = "获取系统信息，这是一个同步接口。";
+        var a = {
+            insertText: n,
+            documentation: r
+        };
+        n = "onAccelerometerChange(function(res){\n  {{// callback}}\n})",
+        r = "监听重力感应数据，频率：5次/秒。";
+        var s = {
+            insertText: n,
+            documentation: r
+        };
+        n = "onCompassChange(function(res){\n  {{// callback}}\n})",
+        r = "监听罗盘数据，频率：5次/秒。";
+        var l = {
+            insertText: n,
+            documentation: r
+        };
+        n = "makePhoneCall({\n  phoneNumber: '{{String}}',\n  success: function(res) {\n    {{// success}}\n  }\n})",
+        r = "拨打电话";
+        var c = {
+            insertText: n,
+            documentation: r
+        };
+        n = "scanCode({\n  success: function(res) {\n    {{// success}}\n  },\n  fail: function(res) {\n    {{// fail}}\n  },\n  complete: function(res) {\n    {{// complete}}\n  }\n})",
+        r = "调起扫码界面";
+        var u = {
+            insertText: n,
+            documentation: r
+        };
+        e.exports = {
+            getNetworkType: o,
+            getSystemInfo: i,
+            getSystemInfoSync: a,
+            onAccelerometerChange: s,
+            onCompassChange: l,
+            makePhoneCall: c,
+            scanCode: u
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = "setNavigationBarTitle({\n  title: '{{String}}',\n  success: function(res) {\n    {{// success}}\n  }\n})",
+        r = "动态设置当前页面的标题。",
+        o = {
+            insertText: n,
+            documentation: r
+        };
+        n = "hideNavigationBarLoading()",
+        r = "隐藏导航条加载动画。";
+        var i = {
+            insertText: n,
+            documentation: r
+        };
+        n = "showNavigationBarLoading()",
+        r = "在当前页面显示导航条加载动画。";
+        var a = {
+            insertText: n,
+            documentation: r
+        };
+        e.exports = {
+            setNavigationBarTitle: o,
+            showNavigationBarLoading: a,
+            hideNavigationBarLoading: i
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "navigateTo({\n  url: '{{String}}',\n  " + r.cb + "\n})",
+        i = "保留当前页面，跳转到应用内的某个页面，使用wx.navigateBack可以返回到原页面。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "redirectTo({\n  url: '{{String}}',\n  " + r.cb + "\n})",
+        i = "关闭当前页面，跳转到应用内的某个页面。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "navigateBack({\n  delta: {{1}}, // 回退前 delta(默认为1) 页面\n  " + r.cb + "\n})",
+        i = "关闭当前页面，回退前 delta(默认为1) 页面。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "switchTab({\n  url: '{{String}}',\n  " + r.cb + "\n})",
+        i = "跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            navigateTo: a,
+            redirectTo: s,
+            navigateBack: l,
+            switchTab: c
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = 'createAnimation({\n  duration: 400,\n  timingFunction: \'linear\', // "linear","ease","ease-in","ease-in-out","ease-out","step-start","step-end"\n  delay: 0,\n  transformOrigin: \'50% 50% 0\',\n  success: function(res) {\n    {{function code}}\n  }\n})',
+        r = "创建一个动画实例 animation。",
+        o = {
+            insertText: n,
+            documentation: r
+        };
+        e.exports = {
+            createAnimation: o
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "createContext()",
+        i = "创建并返回绘图上下文context对象。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "drawCanvas({\n  canvasId: '{{String}}',\n  actions: {{actions}}\n})",
+        i = "drawCanvas。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "canvasToTempFilePath({\n  canvasId: {{canvasId}},\n  " + r.cb + "\n})\n",
+        i = "将 canvas 导出为图片，并返回临时文件路劲。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        o = "canvasToTempFilePath({\n  canvasId: {{canvasId}}\n})\n",
+        i = "创建 canvas 绘图上下文（指定 canvasId）";
+        var c = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            createContext: a,
+            drawCanvas: s,
+            canvasToTempFilePath: l,
+            createCanvasContext: c
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "hideKeyboard()",
+        i = "收起键盘。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "stopPullDownRefresh()",
+        i = "停止当前页面下拉刷新。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "scanCode({\n  " + r.cb + "\n})",
+        i = "调起客户端扫码界面，扫码成功后返回对应的结果";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            hideKeyboard: a,
+            stopPullDownRefresh: s,
+            scanCode: l
+        }
+    },
+    function(e, t, n) {
+        "use strict";
+        var r = n(43),
+        o = "login({\n  " + r.cb + "\n})",
+        i = "调用接口获取登录凭证（code）进而换取用户登录态信息，包括用户的唯一标识（openid） 及本次登录的 会话密钥（session_key）。",
+        a = {
+            insertText: o,
+            documentation: i
+        };
+        o = "getUserInfo({\n  " + r.cb + "\n})",
+        i = "获取用户信息，需要先调用 wx.login 接口。";
+        var s = {
+            insertText: o,
+            documentation: i
+        };
+        o = "requestPayment({\n  timeStamp: '{{String1}}',\n  nonceStr: '{{String2}}',\n  package: '{{String3}}',\n  signType: 'MD5',\n  paySign: '{{String4}}',\n  " + r.cb + "\n})",
+        i = "发起微信支付。";
+        var l = {
+            insertText: o,
+            documentation: i
+        };
+        e.exports = {
+            login: a,
+            getUserInfo: s,
+            requestPayment: l
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = "App({\n  onLaunch: function () {\n    {{String1}}\n  },\n  onShow: function () {\n    {{String2}}\n  },\n  onHide: function () {\n    {{String3}}\n  },\n  onError: function (msg) {\n    {{String4}}\n  }\n})",
+        r = "使用 App 函数来生成一个程序实例",
+        o = monaco.languages.CompletionItemKind.Function,
+        i = "App";
+        e.exports = {
+            insertText: n,
+            documentation: r,
+            kind: o,
+            label: i
+        }
+    },
+    function(e, t) {
+        "use strict";
+        var n = "Page({\n  data:{\n    {{String1}}\n  },\n  onLoad:function(options){\n    // 生命周期函数--监听页面加载\n    {{String2}}\n  },\n  onReady:function(){\n    // 生命周期函数--监听页面初次渲染完成\n    {{String3}}\n  },\n  onShow:function(){\n    // 生命周期函数--监听页面显示\n    {{String4}}\n  },\n  onHide:function(){\n    // 生命周期函数--监听页面隐藏\n    {{String5}}\n  },\n  onUnload:function(){\n    // 生命周期函数--监听页面卸载\n    {{String6}}\n  },\n  onPullDownRefresh: function() {\n    // 页面相关事件处理函数--监听用户下拉动作\n    {{String7}}\n  },\n  onReachBottom: function() {\n    // 页面上拉触底事件的处理函数\n    {{String8}}\n  },\n  onShareAppMessage: function() {\n    // 用户点击右上角分享\n    return {\n      title: '{{title}}', // 分享标题\n      desc: '{{desc}}', // 分享描述\n      path: '{{path}}' // 分享路径\n    }\n  }\n})",
+        r = "使用 Page 函数来生成一个页面实例",
+        o = monaco.languages.CompletionItemKind.Function,
+        i = "Page";
+        e.exports = {
+            insertText: n,
+            documentation: r,
+            kind: o,
+            label: i
+        }
+    },

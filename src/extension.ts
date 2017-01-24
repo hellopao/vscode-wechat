@@ -7,6 +7,7 @@ import * as vscode from 'vscode';
 import createFileAssociation from "./fileAssociation";
 import createTypeDefinition from "./typeDefinition";
 import createJSConfiguration from "./jsconfiguration";
+import createCodeSnippets from "./codeSnippet";
 import * as wechatApp from "./wechatApp";
 
 function checkWechatAppProj() {
@@ -42,7 +43,9 @@ export function activate(context: vscode.ExtensionContext) {
             // 安装wx.d.ts
             createTypeDefinition(),
             // 创建jsconfig.json
-            createJSConfiguration()
+            createJSConfiguration(),
+            // 创建代码片段
+            createCodeSnippets()
         ]);
     }
 

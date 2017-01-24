@@ -45,7 +45,7 @@
         var devices = [
             { id: 'iphone_4s', name: 'iPhone4s (320x480;Dpr 2)', width: 320, height: 480, dpr: 2 },
             { id: 'iphone_5', name: 'iPhone5 (320x568;Dpr 2)', width: 320, height: 568, dpr: 2 },
-            { id: 'iphone_6', name: 'iPhone6 (375x667;Dpr 2)', width: 375, height: 667, dpr: 2 },
+            { id: 'iphone_6', name: 'iPhone6 (375x667;Dpr 2)', width: 375, height: 667, dpr: 2 , defaults: true},
             { id: 'iphone_6p', name: 'iPhone6 Plus (414x736;Dpr 3)', width: 414, height: 736, dpr: 3 },
             { id: 'samsung_s5', name: 'Galaxy S5 (384x640;Dpr 3)', width: 384, height: 640, dpr: 3 },
             { id: 'nexus_4', name: 'Nexus 4 (384x640;Dpr 2)', width: 384, height: 640, dpr: 2 },
@@ -70,6 +70,9 @@
 
         function createSelect() {
             document.querySelector('#devicesSelect').innerHTML = devices.map(device => {
+                if (device.defaults) {
+                    return `<option selected="selected">${device.name}</option>`
+                }
                 return `<option>${device.name}</option>`
             }).join('');
         }
@@ -101,7 +104,7 @@
         <select name="" id="devicesSelect" class="center" onchange="changeDevice(this.selectedIndex)"></select>
     </div>
     <div class="iframe">
-        <iframe id="previewer" class="center" src="http://127.0.0.1:$$PORT$$" height="480" width="320"/>
+        <iframe id="previewer" class="center" src="http://127.0.0.1:$$PORT$$" height="667" width="375"/>
     </div>
 </body>
 </html>

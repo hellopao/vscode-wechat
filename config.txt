@@ -1,0 +1,116 @@
+function(e, t) {
+        var n = monaco.languages.CompletionItemKind.Keyword,
+            r = void 0,
+            o = void 0,
+            i = void 0;
+        r = "navigationBarBackgroundColor", o = '导航栏背景颜色，如"#000000"。', i = '"navigationBarBackgroundColor": "{{#000000}}"';
+        var a = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "navigationBarTextStyle", o = "导航栏标题颜色，仅支持 black/white。", i = '"navigationBarTextStyle": "{{white}}"';
+        var s = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "navigationBarTitleText", o = "导航栏标题文字内容。", i = '"navigationBarTitleText": "{{String}}"';
+        var l = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "backgroundColor", o = "窗口的背景色。", i = '"backgroundColor": "{{#ffffff}}"';
+        var c = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "backgroundTextStyle", o = "下拉背景字体、loading 图的样式，仅支持 dark/light。", i = '"backgroundTextStyle": "{{dark}}"';
+        var u = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "enablePullDownRefresh", o = "是否开启下拉刷新。", i = '"enablePullDownRefresh": {{false}}';
+        var d = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        e.exports = [a, s, l, c, u, d]
+    }, function(e, t) {
+        var n = monaco.languages.CompletionItemKind.Keyword,
+            r = void 0,
+            o = void 0,
+            i = void 0;
+        r = "color", o = "tab 上的文字默认颜色。", i = '"color": "{{#000000}}"';
+        var a = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "selectedColor", o = "tab 上的文字选中时的颜色。", i = '"selectedColor": "{{#000000}}"';
+        var s = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "backgroundColor", o = "tab 的背景色。", i = '"backgroundColor": "{{#000000}}"';
+        var l = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "borderStyle", o = "tabbar上边框的颜色， 仅支持 black/white 。", i = '"borderStyle": "{{black}}"';
+        var c = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "backgroundTextStyle", o = "下拉背景字体、loading 图的样式，仅支持 dark/light。", i = '"backgroundTextStyle": "{{dark}}"';
+        var u = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "tabBar", o = "tab 的列表最少2个、最多5个 tab", i = '"tabBar": {\n  "list": [{\n    "pagePath": "{{pagePath}}",\n    "text": "{{text}}",\n    "iconPath": "{{iconPath}}",\n    "selectedIconPath": "{{selectedIconPath}}"\n  }]\n}';
+        var d = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        e.exports = [a, s, c, l, u, d]
+    }, function(e, t) {
+        var n = monaco.languages.CompletionItemKind.Keyword,
+            r = void 0,
+            o = void 0,
+            i = void 0;
+        r = "pages", o = "设置页面路径。", i = '"pages": [\n  {{Entrance}}\n],';
+        var a = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "window", o = "设置默认页面的窗口表现。", i = '"window": {\n  "navigationBarBackgroundColor": "{{#ffffff}}",\n  "navigationBarTextStyle": "{{black}}",\n  "navigationBarTitleText": "{{小程序}}",\n  "backgroundColor": "{{#eeeeee}}",\n  "backgroundTextStyle": "{{light}}",\n  "enablePullDownRefresh": {{false}}\n}';
+        var s = {
+            label: r,
+            documentation: o,
+            insertText: i,
+            kind: n
+        };
+        r = "networkTimeout", o = "设置各种网络请求的超时时间。", i = '"networkTimeout": {\n  "request": {{20000}},\n  "connectSocket": {{20000}},\n  "uploadFile": {{20000}},\n  "downloadFile": {{20000}}\n}';
