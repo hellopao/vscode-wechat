@@ -2,7 +2,7 @@
   "name": "vscode-wechat",
   "displayName": "vscode-wechat",
   "description": "wechat app support for vscode",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "qinjia",
   "icon": "icon.png",
   "engines": {
@@ -57,6 +57,6 @@
     "download": "^5.0.2",
     "mz": "^2.6.0",
     "portfinder": "^1.0.9",
-    "wept": "^0.6.8"
+    "wept": "^0.8.0"
   }
 }

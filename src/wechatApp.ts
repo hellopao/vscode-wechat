@@ -9,7 +9,7 @@ import * as portServices from "./libs/port";
 
 const previewContentTpl = path.join(__dirname, "../../index.html");
 const previewContent = path.join(__dirname, "../../content.html");
-const previewUri = vscode.Uri.parse(`file:///${previewContent}`);
+const previewUri = vscode.Uri.parse(process.platform == "win32" ? `file:///${previewContent}`: previewContent);
 
 export function startWechatAppServer(port): PromiseLike<any> {
     return new Promise((resolve, reject) => {
